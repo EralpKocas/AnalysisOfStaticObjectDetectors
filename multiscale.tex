@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+Multi-scale handling refers to detect objects that have different 
+sizes in given frame. Multi-scale handling is a crucial feature for 
+having a well performing detector since most of the objects in images
+have different sizes. There are various ways to handle this problem: \par
+
+One of the solution is to run detection multiple times that in each 
+run, the resolution of input frame has to be changed. Then, all the 
+detected objects has to be combined after all iterations are completed. 
+In case of multiple detection for same object, a suppression has to be 
+performed to reduce single detection. Although this method works well, 
+its runtime is slow. \par
+
+Another solution is to use single feature map. In this method, single 
+feature map is extracted from given frame and this feature map is passed 
+through multiple convolutional layers to obtain a final feature map with 
+more fine-grained features. Then, this feature map is used to predict the 
+objects in given frame. This method is used to obtain fast detection but 
+its performance is relatively worse than other methods. \par
+
+Another solution is to use pyramidal feature hierarchy in which multiple 
+feature maps are used to make prediction. In this method, a feature map 
+is extracted from given frame and as it is in second solution, this 
+feature map is passed through multiple convolutional layers. However, 
+in each layer, the extracted feature map is used to make prediction. This 
+method is relatively works slower than second solution but it performs better. \par
+
+Another solution is to use feature pyramid network but this method will be 
+examined detaily in section 3.2.8. 
+\end{document}
