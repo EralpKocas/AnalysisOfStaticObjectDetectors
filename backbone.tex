@@ -6,6 +6,21 @@
 
 \indent
 
-Backbone section.
+Backbone networks are the initial part of a detector's architecture.
+The given frame is processed for the first time in backbone networks.
+These backbone networks are implemented as Fully Convolutional Neural
+Networks. The used networks are the ones that are already proven to be 
+perform well in images. The most frequent used ones are as following:
+\begin{itemize}
+    \item VGG
+    \item ResNet
+    \item DarkNet
+    \item Feature Pyramid Network
+    \item Hourglass
+\end{itemize}
+\indent
 
+The main function of these networks is to compute convolutional feature map
+over given frame, so that, these extracted feature maps are used to detect 
+and localize objects in given frames.
 \end{document}
