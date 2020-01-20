@@ -1,0 +1,57 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+Before introducing YOLO9000, one has to explain YOLOv2 since YOLOv2 
+is the improved version of YOLO in both detection performance and speed 
+while keeping real-time speed of detection. YOLO9000 refers to a joint 
+training method on object detection and classification. Using this 
+joint training method, one can detect objects that do not have any 
+labelled detection data. Now, YOLOv2 will be explained and later, 
+YOLO9000 will be explained. \par
+
+As the name of the article suggested, YOLOv2 will be explained in three 
+different perspective: Better, faster, stronger. While better and faster 
+refer to performance increase of YOLO which is YOLOv2, stronger refers to 
+YOLO9000. 
+
+\begin{enumerate}
+    \item Better
+    \begin{itemize}
+        \item Analyzing the sufferings of YOLO, one can see that 
+YOLO suffers from localization and having a low recall rate. Thus, 
+the aim is to improve recall and localization while maintaining 
+classification accuracy.
+    \end{itemize}
+    \begin{enumerate}
+        \item Batch Normalization
+        \begin{itemize}
+            \item Applying batch normalization leads to significant 
+improvement in performance and also it reduces the need for other forms 
+of regularizations. One can remove dropout from the model without overfitting.
+            \item Batch normalization leads to 2\% increase in mAP.
+        \end{itemize}
+        \item High Resolution Classifier
+        \begin{itemize}
+            \item Training of YOLO is occured in two phases: first, convolutional 
+layers are trained on ImageNet classification task on image resolution of 224 x 224.
+Then, the convolutional layers are trained for detection on image resolution of 448 x 448.
+This causes detector to switch itself for learning detection for new resolution 
+simultaneously.
+            \item In YOLOv2, before detector is switched for learning detection, 
+classifier network is trained for 448 x 448 resolution images for 10 epochs on ImageNet.
+Thus, a time is provided for network to adjust itself to work better on high resolution.
+            \item High Resolution Classifier leads to 4\% increase in mAP.
+        \end{itemize}
+        \item Convolutional with Anchor Boxes
+        \begin{itemize}
+            \item xd
+        \end{itemize}
+    \end{enumerate}
+    \item Faster
+\end{enumerate}
+\end{document}
