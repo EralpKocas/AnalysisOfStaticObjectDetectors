@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+Single Shot MultiBox Detector is a single deep neural network which aims to detect 
+objects in real-time. The main improvement in speed comes from eliminating region 
+proposals as Faster R-CNN does. Although eliminating region proposals increases 
+the speed of detection, it reduces the accuracy significantly. Thus, three main 
+improvements are applied to increase accuracy:
+\begin{enumerate}
+    \item Multi-Scale Feature Maps for Detection
+    \begin{itemize}
+        \item As mentioned in section 2.3, handling multi-scale is important feature 
+for object detectors. It can reduce the mAP for detector's performance since objects 
+of different sizes in given image cannot be detected well. To handle multi-scale detection, 
+SSD uses multi-scale feature maps instead of using different sizes of input images. 
+The size of feature maps decreases through the network's architecture. For larger feature maps,
+SSD can detect smaller objects and for smaller feature maps, smaller objects can be detected.
+    \end{itemize}
+    \item Convolutional Predictors for Detection
+    \begin{itemize}
+        \item Small-size convolutional filters are used to make prediction for 
+object detection. These convolutional filters are applied on extracted feature maps 
+to compute both localization and class scores. Each filter computes a bounding box and 
+corresponding class scores for each category.
+    \end{itemize}
+    \item Default Bounding Boxes and Aspect Ratios
+    \begin{itemize}
+        \item SSD divides its feature maps into a grid and each feature map cells are 
+associated with a set of default bounding boxes. 
+    \end{itemize}
+\end{enumerate}
+
+\end{document}
