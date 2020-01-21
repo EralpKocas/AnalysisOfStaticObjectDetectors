@@ -1,0 +1,33 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+CornerNet is a complete new approach to object detection. It detects objects using 
+paired keypoints which means detecting bounding boxes using top-left and bottom-right 
+corners of objects. In addition to this new approach, corner pooling is introduced. 
+Corners are better localized using corner pooling. Using paired keypoints eliminates 
+the need for using anchor boxes. \par
+
+There are two drawbacks of using anchor boxes: 
+\begin{enumerate}
+    \item Anchor boxes require a huge set. Since most of the anchor boxes do not 
+    overlap with ground-truth bounding boxes, a huge imbalance between positive and 
+    negative anchor boxes is created and handling this imbalance slows down training.
+    \item Anchor boxes introduce many hyperparameters and design choices to make, 
+    it may even introduce more if a single network makes separate predictions at 
+    multiple resolutions.
+\end{enumerate}
+\indent
+
+Corner pooling is applied by taking the maximum values in two directions (horizontal 
+and vertical) for each channel and adding these two values together. \par
+
+In CornerNet, a single neural network predicts a heatmap for the top-left corners 
+of all instances of the same object category, a heatmap for all bottom-right 
+corners, and an embedding vector for each detected corner [reference for paper!].
+
+\end{document}
