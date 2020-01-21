@@ -31,7 +31,12 @@ corresponding class scores for each category.
     \item Default Bounding Boxes and Aspect Ratios
     \begin{itemize}
         \item SSD divides its feature maps into a grid and each feature map cells are 
-associated with a set of default bounding boxes. 
+associated with a set of default bounding boxes. These bounding boxes have fixed position 
+relative to its corresponding grid cell. The aim of using multiple bounding boxes 
+in each grid cell is to detect different-shape objects such as cars and people.
+        \item For different layers of SSD, default bounding boxes are customized for 
+different resolutions. There are target aspect ratios and corresponding to these 
+aspect ratios, default bounding boxes are calculated.
     \end{itemize}
 \end{enumerate}
 

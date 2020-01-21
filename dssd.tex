@@ -1,0 +1,35 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+Deconvolutional Single Shot Detector aims to contribute a new approach for object 
+detection. The major changes in DSSD are to change the base network from VGG16 to 
+ResNet101, using prediction modules, and adding deconvolution layers after convolutional 
+layers of SSD. So, these changes will be examined as follows: 
+\begin{enumerate}
+    \item ResNet101
+    \begin{itemize}
+        \item The aim of changing base network from VGG16 to ResNet101 is to 
+increase accuracy. However, it does not improve accuracy by itself. That's why, 
+the prediction module is used to increase performance.
+    \end{itemize}
+    \item Prediction Module
+    \begin{itemize}
+        \item Due to the principle of improving sub-network can improve accuracy, 
+original SSD approach for prediction is replaced with a prediction module which 
+consists of a residual block. Thus, using ResNet101 with prediction module performs 
+better than VGG16.
+    \end{itemize}
+    \item Deconvolution Layers
+    \begin{itemize}
+        \item The aim of using deconvolutional layers is to include more high-level 
+context in detection, so that, deconvolution module integrates information from both 
+earlier feature maps and earlier deconvolution layers. 
+    \end{itemize}
+\end{enumerate}
+
+\end{document}
