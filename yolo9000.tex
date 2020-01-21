@@ -6,13 +6,12 @@
 
 \indent
 
-Before introducing YOLO9000, one has to explain YOLOv2 since YOLOv2 
-is the improved version of YOLO in both detection performance and speed 
-while keeping real-time speed of detection. YOLO9000 refers to a joint 
-training method on object detection and classification. Using this 
-joint training method, one can detect objects that do not have any 
-labelled detection data. Now, YOLOv2 will be explained and later, 
-YOLO9000 will be explained. \par
+Before introducing YOLO9000, one has to explain YOLOv2 since YOLOv2 is the 
+improved version of YOLO in both detection performance and speed while keeping 
+real-time speed of detection. YOLO9000 refers to a joint training method on 
+object detection and classification. Using this joint training method, one can 
+detect objects that do not have any labelled detection data. Now, YOLOv2 will be 
+explained and later, YOLO9000 will be explained. \par
 
 As the name of the article suggested, YOLOv2 will be explained in three 
 different perspective: Better, faster, stronger. While better and faster 
@@ -22,36 +21,84 @@ YOLO9000.
 \begin{enumerate}
     \item Better
     \begin{itemize}
-        \item Analyzing the sufferings of YOLO, one can see that 
-YOLO suffers from localization and having a low recall rate. Thus, 
-the aim is to improve recall and localization while maintaining 
-classification accuracy.
+        \item Analyzing the sufferings of YOLO, one can see that YOLO suffers from 
+        localization and having a low recall rate. Thus, the aim is to improve 
+        recall and localization while maintaining classification accuracy.
     \end{itemize}
     \begin{enumerate}
         \item Batch Normalization
         \begin{itemize}
-            \item Applying batch normalization leads to significant 
-improvement in performance and also it reduces the need for other forms 
-of regularizations. One can remove dropout from the model without overfitting.
+            \item Applying batch normalization leads to significant improvement in 
+            performance and also it reduces the need for other forms of 
+            regularizations. One can remove dropout from the model without 
+            overfitting.
             \item Batch normalization leads to 2\% increase in mAP.
         \end{itemize}
         \item High Resolution Classifier
         \begin{itemize}
             \item Training of YOLO is occured in two phases: first, convolutional 
-layers are trained on ImageNet classification task on image resolution of 224 x 224.
-Then, the convolutional layers are trained for detection on image resolution of 448 x 448.
-This causes detector to switch itself for learning detection for new resolution 
-simultaneously.
+            layers are trained on ImageNet classification task on image resolution 
+            of 224 x 224. Then, the convolutional layers are trained for detection 
+            on image resolution of 448 x 448. This causes detector to switch itself 
+            for learning detection for new resolution simultaneously.
             \item In YOLOv2, before detector is switched for learning detection, 
-classifier network is trained for 448 x 448 resolution images for 10 epochs on ImageNet.
-Thus, a time is provided for network to adjust itself to work better on high resolution.
+            classifier network is trained for 448 x 448 resolution images for 10 
+            epochs on ImageNet. Thus, a time is provided for network to adjust 
+            itself to work better on high resolution.
             \item High Resolution Classifier leads to 4\% increase in mAP.
         \end{itemize}
         \item Convolutional with Anchor Boxes
         \begin{itemize}
-            \item xd
+            \item convolutional with anchor boxes
+        \end{itemize}
+        \item Dimension Cluster
+        \begin{itemize}
+            \item dimension cluster
+        \end{itemize}
+        \item Direct Location Prediction
+        \begin{itemize}
+            \item direct location prediction
+        \end{itemize}
+        \item Fine-grained Features
+        \begin{itemize}
+            \item fine-grained features
+        \end{itemize}
+        \item Multi-scale Training
+        \begin{itemize}
+            \item The aim of multi-scale training is to make detector more robust 
+            to running images of different sizes. Thus, detector chooses a new 
+            image dimension size in every 10 epochs during training from a list of 
+            sizes \{320, 352, ...., 608\}.
+            \item There is a tradeoff between speed and accuracy since detector 
+            performs faster when image size is smaller but accuracy is worse when 
+            image size is smaller.
         \end{itemize}
     \end{enumerate}
     \item Faster
+
+    The main motivation of YOLO is to design a detector which performs 
+    real-time object detection while maintaining the detection accuracy high 
+    as possible. To increase detection performance, some features of detector 
+    has to be more complex but designing a more complex architecture causes 
+    slower detection speed. To create space for more complex features, in 
+    YOLOv2, speed of backbone network is increased as following:
+    \begin{itemize}
+        \item VGG16 requires 30.69 billion floating point operations for a single 
+        pass over a single image at 224 x 224 resolution [reference to paper!].
+        \item YOLO framework uses a custom backbone network based on GoogleNet 
+        architecture. This network uses 8.52 billion operations, however, it works 
+        slightly worse than VGG16.
+        \item Thus, in YOLOv2, a new classification model is used as backbone network 
+        which is called DarkNet19. This network requires 5.58 billion operations.
+        \item Their accuracy on ImageNet as follows:
+        \begin{enumerate}
+            \item VGG16: 90.0\% top-5 accuracy.
+            \item YOLO: 88\% top-5 accuracy.
+            \item DarkNet19: 91.2\% top-5 accuracy.
+        \end{enumerate}
+    \end{itemize}
+    \item Stronger
+    
+    Word-tree hiearchy!
 \end{enumerate}
 \end{document}
