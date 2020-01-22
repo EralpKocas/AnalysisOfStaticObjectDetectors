@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+In this section datasets and performance metrics will be explained. \par 
+Datasets are used in training and testing of detectors. Datasets consist of some 
+specific type of objects, in object detection case they are images, and the 
+corresponding ground-truth information about the categories in images that 
+detector performs to detect. So, the following datasets are mainly used in 
+object detection:
+\begin{itemize}
+    \item Pascal VOC
+    \item MS COCO
+    \item MOT
+\end{itemize} 
+
+Performance metrics are the way to measure the accuracy of detectors. In object 
+detection, improving precision and recall yields to better test performance. The 
+difference lies under the calculation of these metrics for object detection since 
+correctly classifying the object in the image is not enough, detector also correctly 
+localize the object in the image. So, to measure the correctness of each detection, 
+a metric called Intersection over Union is used:
+\begin{itemize}
+    \item Intersection over Union (IoU)
+    IoU is the ratio between the intersection of predicted and ground-truth bounding box 
+    divided by union of predicted and ground-truth bounding box. 
+    \item Correctness of Detection
+    IoU is used as a threshold to identify a detection as positive or negative. The 
+    most commonly used IoU threshold is 0.5 which means if IoU value of a detection is 
+    bigger than 0.5, that detection is counted as True Positive; otherwise, False Positive.
+    \item The following concepts are used by the metrics:
+    \begin{itemize}
+        \item True Positive (TP): A correct detection, IoU $\geq$ threshold. 
+        \item False Positive (FP): A wrong detection, IoU $\leq$ threshold.
+        \item False Negative (FN): A ground-truth not detected.
+        \item True Negative (TN): Since there are many possible bounding boxes that 
+        do not contain any object, counting corrected misdetection is not necessarily 
+        needed.
+    \end{itemize}
+    
+\end{itemize}
+\end{document}
