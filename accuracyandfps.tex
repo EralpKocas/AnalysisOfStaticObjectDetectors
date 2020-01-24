@@ -1,0 +1,27 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+Obtained accuracy and frame rate per second performances of detectors are visible 
+on figure \ref{fig:performancetable1}. These results are valid on COCO dataset. 
+Since most of the detectors perform well on Pascal VOC dataset and COCO is more hard 
+dataset to obtain better accuracy, only the results on COCO dataset is shown. Also, 
+the aim of this study is to find out which detectors can be applicable in real-time. 
+Therefore, the detectors that are shown in figure \ref{fig:performancetable1} 
+are chosen in a specific form in which they are most close to their real-time 
+applicable specifications. \par
+
+Based on the results in figure \ref{fig:performancetable1}, YOLOv2, YOLOv3 for 320x
+320 image resolution, YOLOv3 for 416x416 image resolution, SSD for both 300x300 and 
+512x512 image resolution, EfficientDet-D3 can be used in real-time applications since 
+videos require 24 FPS to play without any distortion in human perception. Although, 
+rest of the detectors cannot be applicable in real-time, their accuracy is better 
+than these real-time applicable detectors. Thus, these detectors can be used in 
+different cases than real-time applications, so that, better accuracy in objective 
+can be obtained. 
+
+\end{document}
