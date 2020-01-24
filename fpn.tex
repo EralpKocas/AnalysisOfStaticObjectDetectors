@@ -23,7 +23,16 @@ feature extractor keeping accuracy and speed in mind. \par
 
 As you can see in figure \ref{fig:fpnvis1}, FPN consists of a bottom-up and 
 top-down pathway. In the bottom-up pathway, as in pyramidal feature hiearchy 
-(Fig. \ref{fig:fig:multiscalefeatmaps1}(c)), a convolutional network is used as 
-feature extractor. 
- 
+(Fig. \ref{fig:multiscalefeatmaps1}(c)), a convolutional network is used as 
+feature extractor. As layers go through, the resoulution for feature maps 
+are getting smaller, however, the detected features are more high level which 
+leads to increase of semantic value for each layer. In the top-down pathway, 
+higher resolution feature maps are constructed using semantic rich layer and 
+corresponding layer from bottom-up pathway. The reason of lateral 
+connection from bottom-up pathway is to obtain location information of 
+objects since after bottom-up and top-down pathways, the locations of 
+objects not precise. Thus, connection to corresponding feature maps 
+may help to increase the possibility of finding correct locations for 
+objects. 
+
 \end{document}
