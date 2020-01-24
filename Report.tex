@@ -4,6 +4,7 @@
 \usepackage{subfiles}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{multicol}
 
 \graphicspath{{images/}}
 
@@ -31,10 +32,6 @@
 \subfile{literatureSOD}
 \vfill
 
-\subsection{Literature in Video Object Detection}
-\subfile{literatureinVOD}
-\vfill
-
 \section{Detector Features}
 \subfile{detectorfeatures}
 \vfill
@@ -56,8 +53,6 @@
 \subfile{lossfunctions}
 \vfill
 
-\subsection{Bells-And-Whistles}
-
 \section{Static Detector Types}
 \subfile{staticdetectortypes}
 \vfill
@@ -67,8 +62,6 @@
 \subsubsection{Faster R-CNN}
 \subfile{fasterrcnn}
 \vfill
-
-\subsubsection{Mask R-CNN}
 
 \subsection{One-Stage Detectors}
 
@@ -80,7 +73,6 @@
 \subfile{yolo9000}
 \vfill
 
-\subsubsection{YOLOv3: An Incremental Improvement}
 \subsubsection{SSD: Single Shot MultiBox Detector}
 \subfile{ssd}
 \vfill
@@ -102,6 +94,9 @@
 \vfill
 
 \subsubsection{EfficientDet: Scalable and Efficient Object Detection}
+\subfile{efficientdet}
+\vfill
+
 \subsubsection{FreeAnchor: Learning to Match Anchors for Visual Object Detection}
 
 \section{Datasets and Metrics}
@@ -114,19 +109,7 @@
 
 \subsection{Accuracy and Real-Time Applicable}
 \subfile{accuracyandfps}
-\subsection{On COCO}
 
-\subsection{In Video}
 \subsubsection{MOT17Det}
-
-\subsection{Quantitative Analysis}
-\subsubsection{Based on Size}
-\subsubsection{Based on Location on Image}
-\subsubsection{Based on Visibility Ratio}
-\subsubsection{Based on Confidence Scores}
-\subsubsection{Based on Combinations}
-
-\subsection{Qualitative Analysis}
-
 
 \end{document}

@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\begin{document}
+
+
+\setlength{\parindent}{6ex}
+
+
+\begin{multicols}{2}
+    \begin{figure*}[ht!]
+        \includegraphics[width=0.5\textwidth]{fpnrep}\hfill
+        \includegraphics[width=0.5\textwidth]{bifpnrep}
+        \caption{FPN (left) and BiFPN (right)}
+        \label{fig:bifpn1}
+    \end{figure*}
+\end{multicols}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{models/efficientdetnet}
+    \caption{Network of EfficientDet}
+    \label{fig:efficientdetnet1}
+\end{figure}
+
+\indent
+
+The aim of this article is to study model efficiency and increase model 
+efficiency. Therefore, building a scalable architecture with both higher 
+accuracy and efficiency is studied. As you can see in figure 
+\ref{fig:bifpn1}, variations of FPN is studied (only the chosen one is 
+put) and BiFPN is chosen as best-performing one. Also, as you can see 
+in figure \ref{fig:efficientdetnet1}, EfficientDet is developed using 
+EfficientNet as backbone, BiFPN as feature extractor, and two subnetworks 
+one responsible for class prediction, the other one responsible for bounding 
+box prediction. \par
+
+There are two main ideas in design of BiFPN: efficient bidirectional 
+cross-scale connections and weighted feature fusion. Difference between 
+FPN and BiFPN can be observed in figure \ref{fig:bifpn1}. FPN has one-way 
+data flow but bidirectional data flow is observed to be better. Also, 
+the nodes that have only one input node are removed since there is no 
+feature fusion and that node will have less contribution to feature network. 
+In addition, an extra edge is added from input nodes to output nodes. The 
+reason is to fuse more features. Finally, to enable more high-level feature, 
+same layer is applied multiple times as you can see in \ref{fig:efficientdetnet1}.
+The importance of multi-scale feature fusion is mentioned before. The novel contribution 
+here is using weights for feature fusion. Previous fusing operations 
+on feature maps does not include weights until BiFPN, therefore, all the 
+input features contribute equally. The problem in here is that different 
+input feature on different resolutions does not contribute output feature 
+equally. Therefore, a weighted feature fusion is needed to obtain a better 
+performance. Thus, learnable parameters are present to learn importance 
+of different features. \par
+
+Bigger backbone networks or higher input resolutions can lead to increase 
+in accuracy but also, can lead to decrease in efficiency due to high 
+number of operations required. Therefore, scaling up the network is crucial 
+to obtain both accuracy and effiency. The scaling component $\phi$ is used. 
+You can see the configurations in figure \ref{fig:efficientdetscale1}. 
+When detector configured from D0 to D7, mean average precision increases but 
+also the inference time for detector to run increases. The required model 
+can be chosen based on the task performed. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{efficientdetscale}
+    \caption{Scaling Table of EfficientDet D0-D7}
+    \label{fig:efficientdetscale1}
+\end{figure}
+
+\end{document}
