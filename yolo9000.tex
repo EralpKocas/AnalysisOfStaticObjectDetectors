@@ -49,19 +49,43 @@ YOLO9000.
         \end{itemize}
         \item Convolutional with Anchor Boxes
         \begin{itemize}
-            \item convolutional with anchor boxes
+            \item The Fully-connected layers in the architecture of YOLO is removed 
+        and instead of fully-connected layers, anchor boxes are used to predict 
+        bounding boxes. Input resolution is decreased from 448x448 to 416x416
+        to have a single center feature map: 13x13 feature map. In YOLO, 
+        predictions are made with 98 bounding boxes, however, in YOLOv2, 
+        predictions are made with more than a thousand bounding boxes.
+        Thus, mean average precision is decreased from 69.5 to 69.2 but 
+        recall is increased from 81\% to 88\%. This tradeoff is worth to do.
+            \item There are two issues using anchor boxes with YOLO. First 
+        one is that box dimensions are hand picked which can lead the network 
+        to learn hard. If initialization may be done better, network can learn 
+        better. The other one is model instability especially in early iterations 
+        of training. Unconstrained anchor boxes can cause a box to be appear anywhere 
+        in given image.
         \end{itemize}
         \item Dimension Cluster
         \begin{itemize}
-            \item dimension cluster
+            \item Dimension cluster is developed to handle hand picked dimension
+        of anchor boxes. To find good anchor boxes for network, k-means clustering is run 
+        over training set bounding boxes. 
         \end{itemize}
         \item Direct Location Prediction
         \begin{itemize}
-            \item direct location prediction
+            \item Direct Location Prediction is developed to handle model instability. 
+        The anchor boxes are constrained as bounding boxes in YOLO. Thus, predictions 
+        are made relative to the location of the grid cell each anchor boxes belong. This 
+        bounds the predicted values 0 and 1. Also, using offsets from top-left of image, the 
+        correct and constrained locations can be found. 
+            \item Using dimension cluster with direct location prediction leads to 5\% increase 
+        over the version with anchor boxes.
         \end{itemize}
         \item Fine-grained Features
         \begin{itemize}
-            \item fine-grained features
+            \item As mentioned above, YOLOv2 predicts with 13x13 feature maps. While this is 
+        enough for large objects, it may perform worse in small objects. To handle this problem, 
+        a passthrough layer is connected from 26x26 feature map to 13x13. By reshaping 26x26 map 
+        to 13x13 map and concatenating them leads to 1\% performance increase. 
         \end{itemize}
         \item Multi-scale Training
         \begin{itemize}
@@ -99,6 +123,32 @@ YOLO9000.
     \end{itemize}
     \item Stronger
     
-    Word-tree hiearchy!
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{wordtree}
+        \caption{Combining ImageNet and COCO using WordTree hierarchy}
+        \label{fig:wordtree1}
+    \end{figure}
+    
+    As mentioned before YOLO9000 is joint training method on classification and detection 
+    data. Detection dataset is used to learn information required to detect such as bounding 
+    box coordinate prediction, objectness, etc. Classification dataset is used to expand the 
+    number of category detector can detect. During training, detection and classification 
+    datasets are used together. When an image is labelled for detection, then, backpropagation 
+    can be done over all architecture. Yet, if an image is labelled for classification, then, 
+    backpropagation can be done over classification parts of architecture. The problem in this 
+    approach is detection datasets have common labels such as dog, cat, etc but classification 
+    datasets have more specific labels such as Norfolk terrier, Yorkshire terrier, etc. 
+    WordNet is used to pull labels. WordNet is a language database that structures and relate 
+    concepts. As you can see in figure \ref{fig:wordtree1}, WordTree is used to combine 
+    detection (COCO) and classification (ImageNet) datasets. Conditional probabilities are used 
+    to predict classifications. An example can be seen in figure \ref{fig:condprob1}.
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{condprob}
+        \caption{Classification calculation example}
+        \label{fig:condprob1}
+    \end{figure}
 \end{enumerate}
 \end{document}

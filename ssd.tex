@@ -19,20 +19,6 @@ proposals as Faster R-CNN does. Although eliminating region proposals increases
 the speed of detection, it reduces the accuracy significantly. Thus, three main 
 improvements are applied to increase accuracy:
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{featmapssd}
-    \caption{Multi-scale feature maps}
-    \label{fig:featmapssd1}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{ssdbbox}
-    \caption{Default Bounding Boxes}
-    \label{fig:ssdbbox1}
-\end{figure}
-
 \begin{enumerate}
     \item Multi-Scale Feature Maps for Detection
     \begin{itemize}
@@ -70,5 +56,19 @@ different resolutions. There are target aspect ratios and corresponding to these
 aspect ratios, default bounding boxes are calculated.
     \end{itemize}
 \end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{featmapssd}
+    \caption{Multi-scale feature maps}
+    \label{fig:featmapssd1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{ssdbbox}
+    \caption{Default Bounding Boxes}
+    \label{fig:ssdbbox1}
+\end{figure}
 
 \end{document}
