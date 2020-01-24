@@ -22,7 +22,7 @@ foreground-background class imbalance in training of dense detectors.
 The improved solution to this problem is called focal loss (Fig. 
 \ref{fig:focalloss1}) which is introduced by this article. \par
 
-Focal loss is the reshaped version of cross-entropy loss. The aim of 
+Focal loss \cite{flretnetcite} is the reshaped version of cross-entropy loss. The aim of 
 this change in cross-entropy is to down-weights the loss calculated for 
 well-classified examples. Thus, detector is trained on sparse set of 
 hard examples. Also, class imbalance is handled by focal loss and 
@@ -41,7 +41,7 @@ The best-performing $\gamma$ value equals to two according to the article.
 \end{figure}
 \indent
 
-RetinaNet is designed to show the effectiveness of Focal Loss. As you 
+RetinaNet \cite{flretnetcite} is designed to show the effectiveness of Focal Loss. As you 
 can see in figure \ref{fig:retinanet1}, RetinaNet uses ResNet as its 
 backbone network and FPN to obtain a multi-scale convolutional feature 
 pyramid. Then, two subnetworks are used to obtain detection results. 

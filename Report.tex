@@ -5,10 +5,14 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{multicol}
+\usepackage{biblatex}
 
 \graphicspath{{images/}}
 
 \setlength{\parindent}{6ex}
+
+\addbibresource{allreferences.bib}
+\bibliography{allreferences}
 
 \title{Object Detection}
 \author{Halil Eralp Koçaş}
@@ -108,6 +112,7 @@
 \subsection{Accuracy and Real-Time Applicable}
 \subfile{accuracyandfps}
 
-\subsubsection{MOT17Det}
+\newpage
 
+\printbibliography
 \end{document}
