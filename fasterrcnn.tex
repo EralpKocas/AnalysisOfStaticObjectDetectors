@@ -7,18 +7,18 @@
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{models/fasterrcnn}
+    \includegraphics[width=0.50\textwidth]{models/fasterrcnn}
     \caption{Network of Faster R-CNN}
     \label{fig:fasterrcnn1}
 \end{figure}
 
 \indent
 
-Faster R-CNN \cite{fasterrcnncite} consists of a region proposal network and a detection network which 
-is improved version of Fast R-CNN as you can see in figure \ref{fig:fasterrcnn1}. 
+Faster R-CNN \cite{fasterrcnncite} consists of a region proposal network and a detection network in which 
+network is a single, unified network. 
 The main improvement in Faster R-CNN is the shared convolutional layers between 
-the RPN and the detection network, so that, the cost of detection is drastically 
-reduced. \par
+the RPN and the detection network as you can see in figure \ref{fig:fasterrcnn1}, so that, the cost of 
+detection is drastically reduced. \par
 
 The RPN provides a simultaneous prediction of object bounds and 
 objectness scores. This is done by adding two convolutional layer after the 
