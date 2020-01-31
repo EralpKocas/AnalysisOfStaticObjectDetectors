@@ -16,20 +16,20 @@
 
 Multi-scale handling is mentioned in section 2.3. For multi-scale input images, 
 the required time and memory is too high to be trained end-to-end simultaneously. 
-Also, pyramidal feature hiearchy in figure \ref{fig:multiscalefeatmaps1} is not 
+Also, the pyramidal feature hierarchy in figure \ref{fig:multiscalefeatmaps1} is not 
 effective for accurate object detection, specifically in small objects due to the 
 resolution of feature maps. Feature Pyramid Network (FPN) \cite{fpncite} is designed as a 
 feature extractor keeping accuracy and speed in mind. \par 
 
 As you can see in figure \ref{fig:fpnvis1}, FPN consists of a bottom-up and 
-top-down pathway. In the bottom-up pathway, as in pyramidal feature hiearchy 
+top-down pathway. In the bottom-up pathway, as in pyramidal feature hierarchy 
 (Fig. \ref{fig:multiscalefeatmaps1}(c)), a convolutional network is used as 
-feature extractor. As layers go through, the resoulution for feature maps 
-are getting smaller, however, the detected features are more high level which 
-leads to increase of semantic value for each layer. In the top-down pathway, 
-higher resolution feature maps are constructed using semantic rich layer and 
-corresponding layer from bottom-up pathway. The reason of lateral 
-connection from bottom-up pathway is to obtain location information of 
+a feature extractor. As layers go through, the resolution for feature maps 
+are getting smaller, however, the detected features is more high level which 
+leads to an increase of semantic value for each layer. In the top-down pathway, 
+higher resolution feature maps are constructed using a semantic rich layer and 
+corresponding layer from the bottom-up pathway. The reason for the lateral 
+connection from the bottom-up pathway is to obtain location information of 
 objects since after bottom-up and top-down pathways, the locations of 
 objects not precise. Thus, connection to corresponding feature maps 
 may help to increase the possibility of finding correct locations for 

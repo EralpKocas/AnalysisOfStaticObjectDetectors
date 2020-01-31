@@ -6,40 +6,39 @@
 
 \indent
 
-You Only Look Once (YOLO) \cite{yolocite} refers to a unified, real-time object detection. 
-YOLO is called unified since it performs simultaneous prediction over 
-all image using its fixed number of bounding boxes in each grid cell. 
-Also, whole detection pipeline is a single network, thus YOLO can be 
-optimized end-to-end directly from given image to its detection performance.
-\par
+You Only Look Once (YOLO) \cite{yolocite} refers to unified, real-time object detection. 
+YOLO is called unified since it performs simultaneous prediction overall image using its 
+fixed number of bounding boxes in each grid cell. Also, the whole detection pipeline is a 
+single network, thus YOLO can be optimized end-to-end directly from a given image to its 
+detection performance. \par
 
 The process of prediction can be examined as follows:
 \begin{enumerate}
-    \item The given image is split into SxS grid.
+    \item The given image is split into the SxS grid.
     \begin{itemize}
-        \item Each grid cell is responsible for prediction of one object.
+        \item Each grid cell is responsible for the prediction of one object.
 The selection of which cell is responsible is chosen by the center of 
 the object. If an object's center falls into a cell, that cell is 
 responsible to predict that object.
     \end{itemize}
-    \item Each grid cell has B bounding boxes to make prediction.
+    \item Each grid cell has B bounding boxes to make a prediction.
     \begin{itemize}
-        \item One prediction for each grid cell, independent of number of 
-bounding boxes, causes YOLO to predict limited number of objects when 
-there are multiple object present in a grid cell.
+        \item One prediction for each grid cell, independent of the number of 
+bounding boxes, causes YOLO to predict a limited number of objects when 
+there are multiple objects present in a grid cell.
     \end{itemize}
     \item Thus, YOLO predicts B bounding boxes and one confidence score for 
 each grid cell. Now, let's get into more detail for these predictions:
     \begin{itemize}
         \item For each of these bounding boxes, five values are predicted:
-x, y, w, h, and confidence score. The values x and y are corresponding object's 
-center coordinates on given image. The values w and h are corresponding object's 
-width and height. The confidence score refers to detector's confidence whether a 
+x, y, w, h, and confidence score. The values x and y are the corresponding object's 
+center coordinates on the given image. The values w and h are corresponding object's 
+width and height. The confidence score refers to detector's confidence whether an 
 object exists in the corresponding bounding box and how accurate the bounding box is.
         \item The values x and y are normalized relative to the cell they belong and 
 the values w and h are normalized relative to the given image, so that, all these 
 x, y, w, and h values are between 0 and 1. Also, a class conditional probability for 
-each grid cell is predicted. Thus, each category in possible class set has one 
+each grid cell is predicted. Thus, each category in the possible class set has one 
 class conditional probability in each grid cell. 
         \item Thus, for SxS grid and B bounding boxes for each grid cell, 
 predictions are encoded as S x S x (B * 5 + C) tensor.

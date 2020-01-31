@@ -22,35 +22,35 @@ improvements are applied to increase accuracy:
 \begin{enumerate}
     \item Multi-Scale Feature Maps for Detection
     \begin{itemize}
-        \item As mentioned in section 2.3, handling multi-scale is important feature 
+        \item As mentioned in section 2.3, handling multi-scale is an important feature 
 for object detectors. It can reduce the mAP for detector's performance since objects 
-of different sizes in given image cannot be detected well. To handle multi-scale detection, 
+of different sizes in a given image cannot be detected well. To handle multi-scale detection, 
 SSD uses multi-scale feature maps instead of using different sizes of input images. 
 The size of feature maps decreases through the network's architecture. You can see in figure 
 \ref{fig:ssd1} the SSD architecture in which layers are getting smaller from left to right and 
 each of these convolutional layers are connected to the prediction module, so that, multi-scale 
 feature maps can be used in prediction. For larger feature maps, SSD can detect smaller objects 
 and for smaller feature maps, smaller objects can be detected. You can see in figure 
-\ref{fig:featmapssd1}, detecting cat in image is done by 8x8 feature map, although, detecting 
-dog is done by 4x4 feature map.
+\ref{fig:featmapssd1}, detecting the cat in the image is done by an 8x8 feature map, although, detecting 
+the dog is done by a 4x4 feature map.
     \end{itemize}
     \item Convolutional Predictors for Detection
     \begin{itemize}
-        \item Small-size convolutional filters are used to make prediction for 
-object detection. These convolutional filters are applied on extracted feature maps 
-to compute both localization and class scores. Each filter computes a bounding box and 
-corresponding class scores for each category.
+        \item Small-size convolutional filters are used to perform object detection. 
+        These convolutional filters are applied to extracted feature maps to compute 
+        both localization and class scores. Each filter computes a bounding box and 
+        corresponding class scores for each category.
     \end{itemize}
     \item Default Bounding Boxes and Aspect Ratios
     \begin{itemize}
         \item SSD divides its feature maps into a grid and each feature map cells are 
-associated with a set of default bounding boxes. These bounding boxes have fixed position 
+associated with a set of default bounding boxes. These bounding boxes have a fixed position 
 relative to its corresponding grid cell. The aim of using multiple bounding boxes 
 in each grid cell is to detect different-shape objects such as cars and people. You can see in 
 figure \ref{fig:ssdbbox1}, there are four different bounding boxes for each grid cells. These bounding 
-boxes are shaped different than the others to increase the chance of detection of different-shaped 
+boxes are shaped differently than the others to increase the chance of detection of different-shaped 
 objects. For example, bounding box 1 in figure \ref{fig:ssdbbox1} can be used to detect cars but 
-bounding box 3 is better option for detecting people.
+bounding box 3 is a better option for detecting people.
         \item For different layers of SSD, default bounding boxes are customized for 
 different resolutions. There are target aspect ratios and corresponding to these 
 aspect ratios, default bounding boxes are calculated.

@@ -7,15 +7,15 @@
 \indent
 
 Before introducing YOLO9000, one has to explain YOLOv2 since YOLOv2 is the 
-improved version of YOLO in both detection performance and speed while keeping 
-real-time speed of detection. YOLO9000 refers to a joint training method on 
+improved version of YOLO in detection performance and speed while keeping 
+the real-time speed of detection. YOLO9000 refers to a joint training method on 
 object detection and classification. Using this joint training method, one can 
 detect objects that do not have any labelled detection data. Now, YOLOv2 will be 
 explained and later, YOLO9000 will be explained. \par
 
 As the name of the article suggested, YOLOv2 will be explained in three 
-different perspective: Better, faster, stronger \cite{yolo9000cite}. While better and faster 
-refer to performance increase of YOLO which is YOLOv2, stronger refers to 
+different perspectives: Better, faster, stronger \cite{yolo9000cite}. While better and faster 
+refer to a performance increase of YOLO which is YOLOv2, stronger refers to 
 YOLO9000. 
 
 \begin{enumerate}
@@ -32,42 +32,42 @@ YOLO9000.
             performance and also it reduces the need for other forms of 
             regularizations. One can remove dropout from the model without 
             overfitting.
-            \item Batch normalization leads to 2\% increase in mAP.
+            \item Batch normalization leads to a 2\% increase in mAP.
         \end{itemize}
-        \item High Resolution Classifier
+        \item High-Resolution Classifier
         \begin{itemize}
-            \item Training of YOLO is occured in two phases: first, convolutional 
+            \item Training of YOLO occurs in two phases: first, convolutional 
             layers are trained on ImageNet classification task on image resolution 
             of 224 x 224. Then, the convolutional layers are trained for detection 
-            on image resolution of 448 x 448. This causes detector to switch itself 
+            on image resolution of 448 x 448. This causes the detector to switch itself 
             for learning detection for new resolution simultaneously.
-            \item In YOLOv2, before detector is switched for learning detection, 
-            classifier network is trained for 448 x 448 resolution images for 10 
-            epochs on ImageNet. Thus, a time is provided for network to adjust 
+            \item In YOLOv2, before the detector is switched for learning detection, 
+            the classifier network is trained for 448 x 448 resolution images for 10 
+            epochs on ImageNet. Thus, a time is provided for the network to adjust 
             itself to work better on high resolution.
-            \item High Resolution Classifier leads to 4\% increase in mAP.
+            \item High-Resolution Classifier leads to a 4\% increase in mAP.
         \end{itemize}
         \item Convolutional with Anchor Boxes
         \begin{itemize}
-            \item The Fully-connected layers in the architecture of YOLO is removed 
+            \item The Fully-connected layers in the architecture of YOLO are removed 
         and instead of fully-connected layers, anchor boxes are used to predict 
         bounding boxes. Input resolution is decreased from 448x448 to 416x416
         to have a single center feature map: 13x13 feature map. In YOLO, 
         predictions are made with 98 bounding boxes, however, in YOLOv2, 
         predictions are made with more than a thousand bounding boxes.
-        Thus, mean average precision is decreased from 69.5 to 69.2 but 
-        recall is increased from 81\% to 88\%. This tradeoff is worth to do.
-            \item There are two issues using anchor boxes with YOLO. First 
+        Thus, the mean average precision is decreased from 69.5 to 69.2 but 
+        the recall is increased from 81\% to 88\%. This tradeoff is worth to do.
+            \item There are two issues using anchor boxes with YOLO. The first 
         one is that box dimensions are hand picked which can lead the network 
-        to learn hard. If initialization may be done better, network can learn 
+        to learn hard. If initialization may be done better, the network can learn 
         better. The other one is model instability especially in early iterations 
-        of training. Unconstrained anchor boxes can cause a box to be appear anywhere 
-        in given image.
+        of training. Unconstrained anchor boxes can cause a box to appear anywhere 
+        in the given image.
         \end{itemize}
         \item Dimension Cluster
         \begin{itemize}
-            \item Dimension cluster is developed to handle hand picked dimension
-        of anchor boxes. To find good anchor boxes for network, k-means clustering is run 
+            \item The dimension cluster is developed to handle hand-picked dimensions
+        of anchor boxes. To find good anchor boxes for the network, k-means clustering is run 
         over training set bounding boxes. 
         \end{itemize}
         \item Direct Location Prediction
@@ -75,45 +75,45 @@ YOLO9000.
             \item Direct Location Prediction is developed to handle model instability. 
         The anchor boxes are constrained as bounding boxes in YOLO. Thus, predictions 
         are made relative to the location of the grid cell each anchor boxes belong. This 
-        bounds the predicted values 0 and 1. Also, using offsets from top-left of image, the 
+        bounds the predicted values 0 and 1. Also, using offsets from the top-left of the image, the 
         correct and constrained locations can be found. 
-            \item Using dimension cluster with direct location prediction leads to 5\% increase 
+            \item Using dimension cluster with direct location prediction leads to a 5\% increase 
         over the version with anchor boxes.
         \end{itemize}
         \item Fine-grained Features
         \begin{itemize}
             \item As mentioned above, YOLOv2 predicts with 13x13 feature maps. While this is 
         enough for large objects, it may perform worse in small objects. To handle this problem, 
-        a passthrough layer is connected from 26x26 feature map to 13x13. By reshaping 26x26 map 
-        to 13x13 map and concatenating them leads to 1\% performance increase. 
+        a passthrough layer is connected from a 26x26 feature map to a 13x13 feature map. 
+        By reshaping 26x26 map to 13x13 map and concatenating them leads to 1\% performance increase. 
         \end{itemize}
         \item Multi-scale Training
         \begin{itemize}
-            \item The aim of multi-scale training is to make detector more robust 
-            to running images of different sizes. Thus, detector chooses a new 
+            \item Multi-scale training aims to make the detector more robust 
+            to running images of different sizes. Thus, the detector chooses a new 
             image dimension size in every 10 epochs during training from a list of 
             sizes \{320, 352, ...., 608\}.
-            \item There is a tradeoff between speed and accuracy since detector 
+            \item There is a tradeoff between speed and accuracy since the detector 
             performs faster when image size is smaller but accuracy is worse when 
             image size is smaller.
         \end{itemize}
     \end{enumerate}
     \item Faster
 
-    The main motivation of YOLO is to design a detector which performs 
-    real-time object detection while maintaining the detection accuracy high 
-    as possible. To increase detection performance, some features of detector 
-    has to be more complex but designing a more complex architecture causes 
+    The main motivation of YOLO is to design a detector that performs 
+    real-time object detection while maintaining the detection accuracy as high 
+    as possible. To increase detection performance, some features of the detector 
+    have to be more complex but designing a more complex architecture causes 
     slower detection speed. To create space for more complex features, in 
-    YOLOv2, speed of backbone network is increased as following:
+    YOLOv2, speed of the backbone network is increased as follows:
     \begin{itemize}
-        \item VGG16 requires 30.69 billion floating point operations for a single 
-        pass over a single image at 224 x 224 resolution [reference to paper!].
+        \item VGG16 requires 30.69 billion floating-point operations for a single 
+        pass over a single image at 224 x 224 resolution \cite{yolo9000cite}.
         \item YOLO framework uses a custom backbone network based on GoogleNet 
         architecture. This network uses 8.52 billion operations, however, it works 
         slightly worse than VGG16.
-        \item Thus, in YOLOv2, a new classification model is used as backbone network 
-        which is called DarkNet19. This network requires 5.58 billion operations.
+        \item Thus, in YOLOv2, a new classification model is used as a backbone network 
+        which is called DarkNet19. This network requires 5.58 billion of operations.
         \item Their accuracy on ImageNet as follows:
         \begin{enumerate}
             \item VGG16: 90.0\% top-5 accuracy.
@@ -130,13 +130,13 @@ YOLO9000.
         \label{fig:wordtree1}
     \end{figure}
     
-    As mentioned before YOLO9000 is joint training method on classification and detection 
+    As mentioned before YOLO9000 is a joint training method on classification and detection 
     data. Detection dataset is used to learn information required to detect such as bounding 
     box coordinate prediction, objectness, etc. Classification dataset is used to expand the 
     number of category detector can detect. During training, detection and classification 
-    datasets are used together. When an image is labelled for detection, then, backpropagation 
-    can be done over all architecture. Yet, if an image is labelled for classification, then, 
-    backpropagation can be done over classification parts of architecture. The problem in this 
+    datasets are used together. When an image is labeled for detection, then, backpropagation 
+    can be done overall architecture. Yet, if an image is labeled for classification, then, 
+    backpropagation can be done over classification parts of the architecture. The problem in this 
     approach is detection datasets have common labels such as dog, cat, etc but classification 
     datasets have more specific labels such as Norfolk terrier, Yorkshire terrier, etc. 
     WordNet is used to pull labels. WordNet is a language database that structures and relate 

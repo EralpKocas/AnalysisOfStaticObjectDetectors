@@ -10,8 +10,27 @@ In this section datasets and performance metrics will be explained. \par
 Datasets are used in training and testing of detectors. Datasets consist of some 
 specific type of objects, in object detection case they are images, and the 
 corresponding ground-truth information about the categories in images that 
-detector performs to detect. So, the mainly used datasets are Pascal VOC and 
-MS COCO. \par
+detector performs to detect. So, the mainly used datasets are Pascal Visual Object 
+Classes (VOC) \cite{pascalvoc} and Microsoft COCO: Common Objects in Context 
+\cite{mscoco}. \par
+
+Pascal VOC datasets are formed based on two challenges: classification and detection. From the 
+beginning year of 2005 to 2012, Pascal VOC challenges are developed. Number of classes and images 
+are increased through challenges. The last challenge of Pascal VOC is occured in 2012. Dataset of 
+2012 consists of 20 categories in 11.530 images. \par
+
+MS COCO aims to present a dataset in which common objects are in their natural 
+contexts. The data are taken from complex everyday scenes. COCO consists of 91 
+object categories in 328k images. A comparison between Pascal VOC and MS COCO 
+of instances per category is shown in figure \ref{fig:cocovspascal1}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{cocovspascal}
+    \caption{Instances per category}
+    \label{fig:cocovspascal1}
+\end{figure}
+\indent
 
 Performance metrics are the way to measure the accuracy of detectors. In object 
 detection, improving precision and recall yields to better test performance. The 
@@ -19,6 +38,7 @@ difference lies under the calculation of these metrics for object detection sinc
 correctly classifying the object in the image is not enough, detector also correctly 
 localize the object in the image. So, to measure the correctness of each detection, 
 a metric called Intersection over Union is used:
+
 \begin{itemize}
     \item Intersection over Union (IoU)
     IoU is the ratio between the intersection of predicted and ground-truth bounding box 

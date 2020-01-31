@@ -18,9 +18,9 @@ functions can also be called error functions. Thus, the aim is to minimize
 the value of loss function during training to have a better detector. 
 In object detection problems, loss functions are composed of two parts: 
 regression difference and classification difference. Loss functions are 
-the measure of difference between predicted regression box and 
+the measure of the difference between predicted regression box and 
 ground-truth regression box and also, the difference between the correct 
-class for object and the predicted class for object. These functions can 
+class for object and the predicted class for the object. These functions can 
 vary based on design choices and different loss functions have different 
 advantages and disadvantages. The most frequent used loss functions as 
 following:
@@ -41,7 +41,8 @@ following:
 
     \item Smooth L1 Loss Function
     
-    The function of smooth L1 loss function can be seen in the figure \ref{fig:smoothl11}.
+    The function of the smooth L1 loss function can be seen 
+    in figure \ref{fig:smoothl11}.
 
     \item Cross-Entropy Loss Function
 
@@ -50,14 +51,14 @@ following:
 \end{itemize}    
 \indent
 
-Since L1 loss function operates on the absolute values, it does not 
-affected by outliers. Therefore, L1 is more robust to outliers. On the
+Since the L1 loss function operates on the absolute values, it does not 
+affect by outliers. Therefore, L1 is more robust to outliers. On the
 other hand, L2 loss function operates on the squared values, therefore, 
 L2 is not robust to outliers since outliers will cause a huge error value. 
-However, if one analyzes and see there is not many outliers in data, then, 
-using L2 loss function leads to a better training. Smooth L1 loss function is a 
+However, if you analyze and see there are not many outliers in data, then, 
+using the L2 loss function leads to better training. Smooth L1 loss function is a 
 combination of L1 and L2 loss functions. When absolute value of loss is small, it 
 behaves similar to L2 loss but when absolute value of loss is high, it behaves 
 similar to L1 loss. Thus, it shares the advantages of both loss functions. Cross-entropy 
-loss function measures the performance of a classification. 
+loss function measures the performance of classification. 
 \end{document}

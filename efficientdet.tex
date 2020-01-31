@@ -24,17 +24,17 @@
 
 \indent
 
-The aim of this article is to study model efficiency and increase model 
+This article aims to study model efficiency and increase model 
 efficiency. Therefore, building a scalable architecture with both higher 
 accuracy and efficiency \cite{efficientdetcite} is studied. As you can see in figure 
-\ref{fig:bifpn1}, variations of FPN is studied (only the chosen one is 
-put) and BiFPN is chosen as best-performing one. Also, as you can see 
+\ref{fig:bifpn1}, variations of FPN are studied (only the chosen one is 
+put) and BiFPN is chosen as the best-performing one. Also, as you can see 
 in figure \ref{fig:efficientdetnet1}, EfficientDet is developed using 
-EfficientNet as backbone, BiFPN as feature extractor, and two subnetworks 
+EfficientNet as a backbone, BiFPN as a feature extractor, and two subnetworks 
 one responsible for class prediction, the other one responsible for bounding 
 box prediction. \par
 
-There are two main ideas in design of BiFPN: efficient bidirectional 
+There are two main ideas in the design of BiFPN: efficient bidirectional 
 cross-scale connections and weighted feature fusion. Difference between 
 FPN and BiFPN can be observed in figure \ref{fig:bifpn1}. FPN has one-way 
 data flow but bidirectional data flow is observed to be better. Also, 
@@ -46,19 +46,19 @@ same layer is applied multiple times as you can see in \ref{fig:efficientdetnet1
 The importance of multi-scale feature fusion is mentioned before. The novel contribution 
 here is using weights for feature fusion. Previous fusing operations 
 on feature maps does not include weights until BiFPN, therefore, all the 
-input features contribute equally. The problem in here is that different 
+input features contribute equally. The problem here is that different 
 input feature on different resolutions does not contribute output feature 
 equally. Therefore, a weighted feature fusion is needed to obtain a better 
-performance. Thus, learnable parameters are present to learn importance 
+performance. Thus, learnable parameters are present to learn the importance 
 of different features. \par
 
-Bigger backbone networks or higher input resolutions can lead to increase 
-in accuracy but also, can lead to decrease in efficiency due to high 
+Bigger backbone networks or higher input resolutions can lead to an increase 
+in accuracy but also, can lead to a decrease in efficiency due to the high 
 number of operations required. Therefore, scaling up the network is crucial 
-to obtain both accuracy and effiency. The scaling component $\phi$ is used. 
+to obtain both accuracy and efficiency. The scaling component $\phi$ is used. 
 You can see the configurations in figure \ref{fig:efficientdetscale1}. 
 When detector configured from D0 to D7, mean average precision increases but 
-also the inference time for detector to run increases. The required model 
+also the inference time for the detector to run increases. The required model 
 can be chosen based on the task performed. 
 
 \begin{figure}
