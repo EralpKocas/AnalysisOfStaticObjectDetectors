@@ -22,7 +22,13 @@ are increased through challenges. The last challenge of Pascal VOC is occured in
 MS COCO aims to present a dataset in which common objects are in their natural 
 contexts. The data are taken from complex everyday scenes. COCO consists of 91 
 object categories in 328k images. A comparison between Pascal VOC and MS COCO 
-of instances per category is shown in figure \ref{fig:cocovspascal1}.
+of instances per category is shown in figure \ref{fig:cocovspascal1}. \par
+
+Another dataset we used to test analyzed detectors is Multiple Object Tracking Benchmark 
+(MOT) \cite{mot}. Although MOT is a dataset for tracking, in challenge MOT17Det, they provide a 
+challenge for Pedestrian Detection. There are seven different video data provided for 
+training set with their ground-truth labels. We used this data as test set. There are 
+5316 frame to process with total of 112297 pedestrians annotated. 
 
 \begin{figure}
     \centering
@@ -39,10 +45,31 @@ correctly classifying the object in the image is not enough, detector also corre
 localize the object in the image. So, to measure the correctness of each detection, 
 a metric called Intersection over Union is used:
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{iou}
+    \caption{A visualization of IoU}
+    \label{fig:iou1}
+\end{figure}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{\multirow{2}{*}{}}                                               & \multicolumn{2}{c|}{Ground-truth Value}                                         \\ \cline{3-4} 
+    \multicolumn{2}{|c|}{}                                                                & Positive       & Negative                                                 \\ \hline
+    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Predicted\\ Value\end{tabular}} & Positive & True Positive  & \begin{tabular}[c]{@{}c@{}}False\\ Positive\end{tabular} \\ \cline{2-4} 
+                                                                               & Negative & False Negative & \begin{tabular}[c]{@{}c@{}}True\\ Negative\end{tabular}  \\ \hline
+    \end{tabular}
+    \caption{Table to understand concepts of classification of a prediction}
+    \label{table:1}
+\end{table}
+
 \begin{itemize}
     \item Intersection over Union (IoU)
     IoU is the ratio between the intersection of predicted and ground-truth bounding box 
-    divided by union of predicted and ground-truth bounding box. 
+    divided by union of predicted and ground-truth bounding box. The figure \ref{fig:iou1} is a 
+    visualization of IoU to help to have a better intuition.
     \item Correctness of Detection
     IoU is used as a threshold to identify a detection as positive or negative. The 
     most commonly used IoU threshold is 0.5 which means if IoU value of a detection is 
@@ -55,12 +82,20 @@ a metric called Intersection over Union is used:
         \item True Negative (TN): Since there are many possible bounding boxes that 
         do not contain any object, counting corrected misdetection is not necessarily 
         needed.
+        \item A better intuition can be obtained by looking into table \ref{table:1}.
     \end{itemize}
     \item These calculated concepts above are used to measure two main metrics: precision and 
     recall. Precision is the ratio of true positives to the sum of true positives and false 
-    positives. Recall is the ratio of true positives to the sum of true positives and false 
-    negatives.
-    \item Lastly, the performance indicator for detectors is mean average precision. Mean 
-    average precision can be calculated by calculating the area under the precision-recall curve.
+    positives which provides the ratio of how accurate is your predictions. Recall is the ratio 
+    of true positives to the sum of true positives and false negatives which indicates the ratio of 
+    finding positives in all positives.
+    \item The performance indicator for detectors is mean average precision. Average precision of a 
+    category can be calculated by calculating the area under precision-recall curve. Then, the mean 
+    average precision is calculated by calculating average precision for all categories and divide 
+    this total AP by the number of categories. In Pascal VOC, AP is calculated by using interpolation. 
+    11-point interpolated precision-recall curve is used. Corresponding precision values of 11 recall 
+    points are summed up and this value is divided by 11. Another way is to calculate all area under 
+    the precision-recall curve which is used in later year competetions of Pascal VOC. In MS COCO, 
+    101-point interpolated AP calculation is used. In MOT17Det, 11-point interpolated AP is used.  
 \end{itemize}
 \end{document}

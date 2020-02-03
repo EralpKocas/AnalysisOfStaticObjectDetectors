@@ -4,17 +4,30 @@
 
 \setlength{\parindent}{6ex}
 
-\begin{figure}
+\begin{table}[]
     \centering
-    \includegraphics[width=0.8\textwidth]{performancetabledet}
-    \caption{Performance table on COCO Dataset}
-    \label{fig:performancetable1}
-\end{figure}
-
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+    Stage     & Model-Input Resolution & Backbone     & mAP            & FPS               \\ \hline
+    Two Stage & Faster R-CNN           & VGG16        & 39.3           & 5                 \\ \hline
+    Two Stage & Faster R-CNN + FPN     & ResNet101    & 58.5           & 6.75              \\ \hline
+    One Stage & YOLOv2                 & DarkNet19    & 21.6           & 40                \\ \hline
+    One Stage & YOLOv3-320/416/608     & DarkNet53    & 28.2/31.0/33.0 & 45.45/34.48/19.60 \\ \hline
+    One Stage & SSD-300/512            & VGG16        & 25.1/28.8      & 59.0/22.0         \\ \hline
+    One Stage & SSD-513                & ResNet101    & 31.2           & 8                 \\ \hline
+    One Stage & DSSD-513               & ResNet101    & 33.2           & 6.41              \\ \hline
+    One Stage & RetinaNet500/800       & ResNet50/101 & 32.5/37.8      & 13.88/5.05        \\ \hline
+    One Stage & RetinaNet              & ResNet101/X  & 39.1/40.8      & 8.19              \\ \hline
+    One Stage & EfficientDet-D3        & EfficientNet & 44.3           & 23.81             \\ \hline
+    One Stage & CornerNet(s/m)         & Hourglass    & 40.5/42.1      & 4.09              \\ \hline
+    \end{tabular}
+    \caption{Performance table on COCO dataset}
+    \label{table:2}
+\end{table}
 \indent
 
 Understanding the performance of detectors based on different cases and different 
 features is important knowledge to decide on the usage of detectors in real-life problems. 
 Therefore, a table to show the performance of detectors is prepared which can be 
-seen in figure \ref{fig:performancetable1}.
+seen in table \ref{table:2}.
 \end{document}
