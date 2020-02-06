@@ -6,6 +6,7 @@
 
 \begin{table}[]
     \centering
+    \resizebox{\textwidth}{!}{
     \begin{tabular}{|l|l|l|l|l|}
     \hline
     Stage     & Model-Input Resolution & Backbone     & mAP            & FPS               \\ \hline
@@ -20,7 +21,7 @@
     One Stage & RetinaNet              & ResNet101/X  & 39.1/40.8      & 8.19              \\ \hline
     One Stage & EfficientDet-D3        & EfficientNet & 44.3           & 23.81             \\ \hline
     One Stage & CornerNet(s/m)         & Hourglass    & 40.5/42.1      & 4.09              \\ \hline
-    \end{tabular}
+    \end{tabular}}
     \caption{Performance table on COCO dataset}
     \label{table:2}
 \end{table}
@@ -29,5 +30,23 @@
 Understanding the performance of detectors based on different cases and different 
 features is important knowledge to decide on the usage of detectors in real-life problems. 
 Therefore, a table to show the performance of detectors is prepared which can be 
-seen in table \ref{table:2}.
+seen in table \ref{table:2} and \ref{table:3}.
+
+\begin{table}[ht]
+    \centering
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+        \hline
+        Model                             & Average Precision & Recall & Precision & FAR   & GT    & TP    & FP     & FN    & MODA   & MODP \\ \hline
+        Faster R-CNN + FPN Threshold: 0.5 & 0.5893            & 67.5   & 77.5      & 2.44  & 66393 & 44792 & 12988  & 21601 & 47.9   & 79.4 \\ \hline
+        SSD512 Threshold: 0.5             & 0.4546            & 56.5   & 75.2      & 2.33  & 66393 & 37521 & 12367  & 28872 & 37.9   & 80.0 \\ \hline
+        YOLOv3\_320 No Threshold          & 0.5532            & 80.0   & 12.4      & 70.32 & 66393 & 53116 & 373818 & 13277 & -483.0 & 77.4 \\ \hline
+        YOLOv3\_320 Threshold: 0.3        & 0.5172            & 61.0   & 56.9      & 5.78  & 66393 & 40509 & 30712  & 25884 & 14.8   & 79.3 \\ \hline
+        YOLOv3\_320 Threshold: 0.5        & 0.4642            & 51.7   & 68.5      & 2.97  & 66393 & 34311 & 15782  & 32082 & 27.9   & 80.2 \\ \hline
+        YOLOv3\_416 Threshold: 0.5        & 0.5236            & 60.2   & 68.4      & 3.48  & 66393 & 39938 & 18481  & 26455 & 32.3   & 80.8 \\ \hline
+    \end{tabular}}
+    \caption{Performance table on MOT dataset}
+    \label{table:3}
+\end{table}
+
 \end{document}

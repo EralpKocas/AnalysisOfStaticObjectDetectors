@@ -9,9 +9,12 @@
 In this article, a detailed study of object detectors is introduced. Object detectors 
 are used to detect object instances in given images. Detector features are important when 
 a detector is designed since these features are the main factors of detectors' performance. 
-State-of-the-art detectors through the years 2015 to 2019 are introduced in this article. 
-These detectors can be used according to the application needed since they all have different 
+These analyzed detectors can be used according to the application needed since they all have different 
 advantages and disadvantages. Most commonly used datasets and performance metrics are introduced 
-and the introduced detectors' performances are compared. Based on this comparison, one can 
-choose a detector that is most applicable to the needed application. 
+and the introduced detectors' performances are compared. The tradeoff between precision and 
+recall is a design choice and it can be chosen based on the task required. For instance, you can lower the 
+threshold if the task is dangerous and even though it is a false alarm, you want to get alarmed in any small 
+change. On the other hand, if the cost of a false alarm is high and the task allows you to miss some events, 
+then, using a high threshold to lower cost and miss some events is suitable. Based on these design choices, one 
+can choose a detector that is most applicable to the needed application.
 \end{document}

@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\begin{document}
+
+\setlength{\parindent}{6ex}
+
+\indent
+
+The Faster R-CNN with FPN, SSD for 512 input resolution, and YOLOv3 for 320 and 416 input 
+resolution are analyzed with the MOT dataset and the results can be observed in table 
+\ref{table:3}. The train set of MOT dataset is used as a test set on these models since 
+their ground-truth values are provided. So, these models are not trained on the MOT dataset. 
+They only trained on the COCO dataset. The class score threshold is a threshold for an object 
+is accepted as its founded class. For instance, if SSD detects an object as a pedestrian 
+with a class score of 0.85 and if the threshold is equal to 0.5, then, this object will be 
+accepted as pedestrian and it will be included in the detected objects' list. However, if 
+the prediction score is 0.3, then, the prediction will be rejected. The threshold for 
+the COCO dataset is 0.5. So, to understand the effect of threshold on detection, YOLOv3 is 
+analyzed on the MOT dataset for different threshold values: 0.0, 0.3, 0.5 as can be observed 
+in table \ref{table:3}. Also, a selected image is visualized with detected bounding boxes 
+on figure \ref{fig:exp_imgs} for different threshold values: 0.0, 0.3, 0.5, 0.7, 0.9. \par
+
+The results in table \ref{table:3} show us that the performances of the analyzed detectors 
+are compatible with their performances in table \ref{table:2}. In addition, in table \ref{table:3}, 
+you can see the effect of input resolution and threshold. \par 
+
+Reducing the resolution of the input image may lead to a loss of information. Therefore, using a bigger input 
+image resolution may increase the average precision of detectors. As you can see in table \ref{table:3}, 
+the average precision is increased from 0.4642 to 0.5236 when you use YOLOv3 with 416 input image 
+resolution instead of 320 input image resolution. This change increases the number of true positives and 
+false positives, however, the number of false negatives is reduced. Therefore, recall is increased 
+significant amount which means a performance increase in detectors. \par
+
+Reducing the threshold for class prediction may lead to an increase in the number of true positives. Yet, 
+you can notice that it also leads to a huge increase in false positives. The reason for this increase can 
+be observed in figure \ref{fig:exp_imgs}. You can see the difference in the number of detected objects in 
+given thresholds for the given image. For instance, having a 0.0 threshold leads our detector to accept a detection 
+as a true detection even the score of classification is around 0.02. Therefore, detectors predict so many 
+detections. The numbers of true and false positives and false negatives  can be observed in table \ref{table:3}.
+You can notice that the number of true positives reduces from 0.0  to 0.9 threshold but the number of false 
+positives also reduces drastically. In addition, the number of false negatives increases in the corresponding order. 
+The reason for this flow is that having a lower threshold leads to detect every part of the given image even though 
+there is no object present. So, in the end, the detector covers every object of the image even with the parts that have 
+no object. Therefore, all the objects are detected and TP is close to GT. Thus, FN is less. Also, since the detector 
+detects many backgrounds as positive, the FP is also high. As a result, keeping the threshold low leads to a better 
+average precision, yet, the precision reduces significant amount and the recall increases significant amount. This means 
+that our detector is good at finding positives but our detector is not accurate since it detects 
+almost anything as positive.  
+
+\end{document}
