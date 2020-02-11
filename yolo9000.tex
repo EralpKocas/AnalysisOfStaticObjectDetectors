@@ -19,7 +19,7 @@ refer to a performance increase of YOLO which is YOLOv2, stronger refers to
 YOLO9000. 
 
 \begin{enumerate}
-    \item Better
+    \item \textbf{Better}
     \begin{itemize}
         \item Analyzing the sufferings of YOLO, one can see that YOLO suffers from 
         localization and having a low recall rate. Thus, the aim is to improve 
@@ -32,7 +32,7 @@ YOLO9000.
             performance and also it reduces the need for other forms of 
             regularizations. One can remove dropout from the model without 
             overfitting.
-            \item Batch normalization leads to a 2\% increase in mAP.
+            \item Batch normalization leads to a \textbf{2\%} increase in mAP.
         \end{itemize}
         \item High-Resolution Classifier
         \begin{itemize}
@@ -45,7 +45,7 @@ YOLO9000.
             the classifier network is trained for 448 x 448 resolution images for 10 
             epochs on ImageNet. Thus, a time is provided for the network to adjust 
             itself to work better on high resolution.
-            \item High-Resolution Classifier leads to a 4\% increase in mAP.
+            \item High-Resolution Classifier leads to a \textbf{4\%} increase in mAP.
         \end{itemize}
         \item Convolutional with Anchor Boxes
         \begin{itemize}
@@ -55,8 +55,8 @@ YOLO9000.
         to have a single center feature map: 13x13 feature map. In YOLO, 
         predictions are made with 98 bounding boxes, however, in YOLOv2, 
         predictions are made with more than a thousand bounding boxes.
-        Thus, the mean average precision is decreased from 69.5 to 69.2 but 
-        the recall is increased from 81\% to 88\%. This tradeoff is worth to do.
+        Thus, the mean average precision is decreased from \textbf{69.5\%} to \textbf{69.2\%} but 
+        the recall is increased from \textbf{81\%} to \textbf{88\%}. This tradeoff is worth to do.
             \item There are two issues using anchor boxes with YOLO. The first 
         one is that box dimensions are hand picked which can lead the network 
         to learn hard. If initialization may be done better, the network can learn 
@@ -77,7 +77,7 @@ YOLO9000.
         are made relative to the location of the grid cell each anchor boxes belong. This 
         bounds the predicted values 0 and 1. Also, using offsets from the top-left of the image, the 
         correct and constrained locations can be found. 
-            \item Using dimension cluster with direct location prediction leads to a 5\% increase 
+            \item Using dimension cluster with direct location prediction leads to a \textbf{5\%} increase 
         over the version with anchor boxes.
         \end{itemize}
         \item Fine-grained Features
@@ -85,7 +85,7 @@ YOLO9000.
             \item As mentioned above, YOLOv2 predicts with 13x13 feature maps. While this is 
         enough for large objects, it may perform worse in small objects. To handle this problem, 
         a passthrough layer is connected from a 26x26 feature map to a 13x13 feature map. 
-        By reshaping 26x26 map to 13x13 map and concatenating them leads to 1\% performance increase. 
+        By reshaping 26x26 map to 13x13 map and concatenating them leads to \textbf{1\%} performance increase. 
         \end{itemize}
         \item Multi-scale Training
         \begin{itemize}
@@ -98,7 +98,7 @@ YOLO9000.
             image size is smaller.
         \end{itemize}
     \end{enumerate}
-    \item Faster
+    \item \textbf{Faster}
 
     The main motivation of YOLO is to design a detector that performs 
     real-time object detection while maintaining the detection accuracy as high 
@@ -121,33 +121,34 @@ YOLO9000.
             \item DarkNet19: 91.2\% top-5 accuracy.
         \end{enumerate}
     \end{itemize}
-    \item Stronger
+    \item \textbf{Stronger}
     
     \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{wordtree}
-        \caption{Combining ImageNet and COCO using WordTree hierarchy}
+        \caption{Combining ImageNet and COCO using WordTree hierarchy \cite{yolo9000cite}}
         \label{fig:wordtree1}
     \end{figure}
     
     As mentioned before YOLO9000 is a joint training method on classification and detection 
     data. Detection dataset is used to learn information required to detect such as bounding 
     box coordinate prediction, objectness, etc. Classification dataset is used to expand the 
-    number of category detector can detect. During training, detection and classification 
-    datasets are used together. When an image is labeled for detection, then, backpropagation 
+    number of category detector can detect. Detection and classification datasets are used together 
+    during training. When an image is labeled for detection, then, backpropagation 
     can be done overall architecture. Yet, if an image is labeled for classification, then, 
-    backpropagation can be done over classification parts of the architecture. The problem in this 
-    approach is detection datasets have common labels such as dog, cat, etc but classification 
-    datasets have more specific labels such as Norfolk terrier, Yorkshire terrier, etc. 
-    WordNet is used to pull labels. WordNet is a language database that structures and relate 
-    concepts. As you can see in figure \ref{fig:wordtree1}, WordTree is used to combine 
+    backpropagation can be done over classification parts of the architecture. \par 
+    
+    This approach requires a modification in prediction of detections. Detection datasets have common 
+    labels such as dog, cat, etc but classification datasets have more specific labels such as Norfolk 
+    terrier, Yorkshire terrier, etc. WordNet is used to pull labels. WordNet is a language database that 
+    structures and relate concepts. As you can see in figure \ref{fig:wordtree1}, WordTree is used to combine 
     detection (COCO) and classification (ImageNet) datasets. Conditional probabilities are used 
     to predict classifications. An example can be seen in figure \ref{fig:condprob1}.
     
     \begin{figure}
         \centering
         \includegraphics[width=0.75\textwidth]{condprob}
-        \caption{Classification calculation example for WordTree}
+        \caption{Classification calculation example for WordTree \cite{yolo9000cite}}
         \label{fig:condprob1}
     \end{figure}
 \end{enumerate}

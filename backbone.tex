@@ -7,14 +7,17 @@
 \indent
 
 Backbone networks are the initial part of a detector's architecture.
-The given frame is processed for the first time in backbone networks.
+The given image is processed for the first time in backbone networks.
 These backbone networks are implemented as Fully Convolutional Neural
-Networks. The used networks are the ones that are already proven to perform 
-well in images. The most used backbone networks are VGG, ResNet, DarkNet, 
-and Hourglass networks.
+Networks. Since these backbone networks are full convolutional neural networks, 
+one of the main benefits of using these is to train our detectors end-to-end. 
+The used networks are the ones that are already proven to perform 
+classification well in large image datasets. The most used backbone networks 
+are VGG \cite{vggcite}, ResNet \cite{resnetcite}, DarkNet \cite{darknetcite}, 
+and Hourglass \cite{hourglasscite} networks.
 \indent
 
-The main function of these networks is to compute convolutional feature maps
-over the given frame, so that, these extracted feature maps are used to detect 
-and localize objects in given frames.
+The main function of these networks is to compute feature maps over the given 
+images, so that, these extracted feature maps are used to detect and localize 
+objects in given images.
 \end{document}

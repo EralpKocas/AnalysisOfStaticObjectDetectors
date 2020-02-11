@@ -7,7 +7,15 @@
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{multiscalefeatmaps}
-    \caption{Different methods to use feature maps}
+    \caption{Different methods to use feature maps \cite{fpncite}. 
+    (a) Image pyramid is used to build a feature pyramid. Input image is 
+    scaled down and feature maps are computed independently which is slow.
+    (b) Initially calculated feature map from input image is downscaled using 
+    convolutional layers and single scale feature map is used. This method is 
+    used for faster convergence. 
+    (c) The idea is to use feature pyramid instead of image pyramid as (a). 
+    This is slower than (a) but more accurate. 
+    (d) will be explained in section \hyperref[sec:fpnref]{3.2.6.}}
     \label{fig:multiscalefeatmaps1}
 \end{figure}
 
@@ -40,5 +48,5 @@ in each layer, the extracted feature map is used to make a prediction. This
 method is relatively slower than the second solution but it performs better. \par
 
 Another solution (Fig. \ref{fig:multiscalefeatmaps1}(d)) is to use feature pyramid network but this method will be 
-examined in section 3.2.6. 
+examined in section \hyperref[sec:fpnref]{3.2.6.}. 
 \end{document}

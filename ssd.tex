@@ -7,7 +7,7 @@
 \begin{figure}
     \centering
     \includegraphics[width=1.25\textwidth]{models/ssd}
-    \caption{Network of SSD}
+    \caption{Network of SSD \cite{ssdcite}}
     \label{fig:ssd1}
 \end{figure}
 
@@ -22,7 +22,7 @@ improvements are applied to increase accuracy:
 \begin{enumerate}
     \item Multi-Scale Feature Maps for Detection
     \begin{itemize}
-        \item As mentioned in section 2.3, handling multi-scale is an important feature 
+        \item As mentioned in section \hyperref[sec:multscale]{2.3}, handling multi-scale is an important feature 
 for object detectors. It can reduce the mAP for detector's performance since objects 
 of different sizes in a given image cannot be detected well. To handle multi-scale detection, 
 SSD uses multi-scale feature maps instead of using different sizes of input images. 
