@@ -9,7 +9,10 @@
     \centering
     \includegraphics[width=0.50\textwidth]{models/fasterrcnn}
     \caption{Network of Faster R-CNN \cite{fasterrcnncite}. 
-    }
+    Faster R-CNN is single and a unified network. The RPN extracts 
+    region of interests (possible locations of objects in the given image) 
+    from the extracted feature map from the given image. Then, the classifier 
+    network operates on the final feature map to classify objects.}
     \label{fig:fasterrcnn1}
 \end{figure}
 
@@ -47,7 +50,9 @@ fixed.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{sliwinrpn}
-    \caption{An example of RPN \cite{fasterrcnncite}}
+    \caption{Region Proposal Network (RPN) \cite{fasterrcnncite}. 
+    RPN takes a convolutional feature map as input. Then, it outputs 
+    a set of rectangular region proposals with objectness score.}
     \label{fig:sliwinrpn1}
 \end{figure}
 

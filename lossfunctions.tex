@@ -4,12 +4,6 @@
 
 \setlength{\parindent}{6ex}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{smoothl1}
-    \caption{Smooth L1 Loss Function}
-    \label{fig:smoothl11}
-\end{figure}
 \indent
 
 Loss functions are used to measure the difference between ground-truth 
@@ -30,23 +24,40 @@ following:
     L1 loss function minimizes the absolute differences between the
     predicted value and ground-truth value.
 
-    $$\sum_{i=1}^{n} (|y_t - y_p|)$$
+    \begin{equation}
+        \sum_{i=1}^{n}\left(\left|y_{t}-y_{p}\right|\right)
+    \end{equation}
 
     \item L2 Loss Function
     
     L2 loss function minimizes the squared differences between the 
     predicted value and ground-truth value.
 
-    $$\sum_{i=1}^{n} (y_t - y_i)^{2}$$
+    \begin{equation}
+        \sum_{i=1}^{n}\left(y_{t}-y_{i}\right)^{2}
+    \end{equation}
 
     \item Smooth L1 Loss Function
     
-    The function of the smooth L1 loss function can be seen 
-    in figure \ref{fig:smoothl11}.
+    Smooth L1 loss function minimizes whether half of the square of the 
+    predicted value or difference of absolute value of predicted value and 
+    0.5.
+
+    \begin{equation}
+        \sum_{i=1}^{n}\left\{\begin{array}{ll}
+        {0.5 y_{i}^{2}} & {\text { if }|y_{i}|<1} \\
+        {|y_{i}|-0.5} & {\text { otherwise }}
+        \end{array}\right.
+    \end{equation}
 
     \item Cross-Entropy Loss Function
 
-    $$\sum_{i=1}^{n} (y_t * \log (y_i))$$
+    Cross-Entropy loss function minimizes the product of ground-truth value 
+    and logarithm of predicted value.
+
+    \begin{equation}
+        \sum_{i=1}^{n}\left(y_{t} * \log \left(y_{i}\right)\right)
+    \end{equation}
 
 \end{itemize}    
 \indent

@@ -6,19 +6,26 @@
 \setlength{\parindent}{6ex}
 
 
-\begin{multicols}{2}
-    \begin{figure*}[ht!]
-        \includegraphics[width=0.5\textwidth]{fpnrep}\hfill
-        \includegraphics[width=0.5\textwidth]{bifpnrep}
-        \caption{FPN (left) and BiFPN (right)}
-        \label{fig:bifpn1}
-    \end{figure*}
-\end{multicols}
+\begin{figure}
+    \includegraphics[width=\textwidth]{evoloffpn}
+    \caption{Feature Network Design \cite{efficientdetcite}. 
+    As it can be seen in this figure, FPN introduces a top-down pathway to fuse multi-scale 
+    features from level 3 to level 7 (P3-P7). Then, PANet introduces an additional bottom-up 
+    pathway. NAS-FPN introduces a method in which a neural architecture is used to find an 
+    irregular network topology. Fully-connected FPN adds expensive connections from all input 
+    features to output features. Simplified PANet removes the nodes if they only have one input 
+    edge. BiFPN is discussed in this paper and it is introduced with better accuracy and efficieny 
+    trade-offs.}
+    \label{fig:bifpn1}
+\end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{models/efficientdetnet}
-    \caption{Network of EfficientDet \cite{efficientdetcite}}
+    \caption{Network of EfficientDet \cite{efficientdetcite}. Its backbone network is EfficientNet 
+    and BiFPN is used as feature network. After the backbone and feature networks, shared class 
+    and box prediction networks are used to predict. Both BiFPN and class/box prediction layers 
+    are used multiple times based on the constraints as shown in figure \ref{fig:efficientdetscale1}.}
     \label{fig:efficientdetnet1}
 \end{figure}
 
@@ -27,10 +34,9 @@
 This article aims to study model efficiency and increase model 
 efficiency. Therefore, building a scalable architecture with both higher 
 accuracy and efficiency \cite{efficientdetcite} is studied. As you can see in figure 
-\ref{fig:bifpn1}, variations of FPN are studied (only the chosen one is 
-put) and BiFPN is chosen as the best-performing one. Also, as you can see 
-in figure \ref{fig:efficientdetnet1}, EfficientDet is developed using 
-EfficientNet as a backbone, BiFPN as a feature extractor, and two subnetworks 
+\ref{fig:bifpn1}, variations of FPN are studied and BiFPN is chosen as the best-performing 
+one. Also, as you can see in figure \ref{fig:efficientdetnet1}, EfficientDet is developed 
+using EfficientNet as a backbone, BiFPN as a feature extractor, and two subnetworks 
 one responsible for class prediction, the other one responsible for bounding 
 box prediction. \par
 
@@ -64,7 +70,8 @@ can be chosen based on the task performed.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{efficientdetscale}
-    \caption{Scaling Table of EfficientDet D0-D7 \cite{efficientdetcite}}
+    \caption{Scaling Table of EfficientDet D0-D7 \cite{efficientdetcite}. $\phi$ is used as 
+    the compound coefficient that controls all other scaling dimensions.}
     \label{fig:efficientdetscale1}
 \end{figure}
 

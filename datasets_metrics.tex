@@ -33,7 +33,9 @@ the training set with their ground-truth labels. We used this data as a test set
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{cocovspascal}
-    \caption{Instances per category \cite{mscoco}}
+    \caption{Instances per category \cite{mscoco}. As it can be seen in the figure, 
+    MS COCO dataset dominates both the number of categories and the number of instances per 
+    category over Pascal VOC dataset.}
     \label{fig:cocovspascal1}
 \end{figure}
 \indent
@@ -48,7 +50,8 @@ a metric called Intersection over Union is used.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{iou}
-    \caption{A visualization of IoU}
+    \caption{A visualization of IoU. The intersection area of two boxes is divided 
+    by the union area of these two boxes.}
     \label{fig:iou1}
 \end{figure}
 
@@ -101,14 +104,40 @@ a metric called Intersection over Union is used.
     Detector assumes an object is present in some location, although there is no object in that same position. 
     So, False Alarm Rate per frame is calculated by dividing the number of false positives to the number of 
     frames in the dataset. The relation of FAR and FP can be observed in table \ref{table:3}.
-    \item Multiple Object Detection Accuracy (MODA) is calculated by using weighted-sum of FN and 
+    \item Multiple Object Detection Accuracy (MODA) \cite{mod} is calculated by using weighted-sum of FN and 
     FP per frame and this sum is divided by the number of ground-truth objects in that frame. So, the 
-    higher the MODA value corresponds to a better performance in a detector.
-    \item Multiple Object Detection Precision (MOTP) is calculated by using the overlap between ground-truth 
+    higher the MODA value corresponds to a better performance in a detector. In the equation \ref{eq:5}, 
+    $m_{t}$ refers to the number of false negatives and $f_{p_{t}}$ refers to the number of 
+    false positives for each frame $t$. Also, $c_{m}$ and $c_{f}$ are the cost functions for the 
+    false negatives and false positives and $N_{G}^{(t)}$ refers to the number of ground-truth 
+    objects in the $t$th frame.
+    
+    \begin{equation} 
+        \label{eq:5}
+        M O D A(t)=1-\frac{c_{m}\left(m_{t}\right)+c_{f}\left(f p_{t}\right)}{N_{G}^{(t)}}
+    \end{equation}
+
+    \item Multiple Object Detection Precision (MODP) \cite{mod} is calculated by using the overlap between ground-truth 
     and predicted object. In other terms, for a given frame, all objects' IoU values are calculated with 
     corresponding to their ground-truth boxes and these values are summed up. Then, this sum is divided by 
     the number of total ground-truth boxes in that frame. Thus, the higher MOTP value corresponds to a better 
     performance in a detector. 
+    
+    \begin{equation} 
+        \label{eq:6}
+        \text {Mapped Overlap Ratio}=\sum_{i=1}^{N^{(t)}-1} \frac{\left|G_{i}^{(t)} \cap D_{i}^{(t)}\right|}{\left|G_{i}^{(t)} \cup D_{i}^{(t)}\right|}
+    \end{equation}
+    
+    \begin{equation} 
+        \label{eq:7}
+        \operatorname{MODP}(t)=\frac{(\text {Mapped Overlap Ratio})}{N_{\text {mapped}}^{(t)}}
+    \end{equation}
+    \indent
+
+    In the equation \ref{eq:6}, $G_{i}^{(t)}$ refers to the $i$th ground-truth object in the 
+    $t$th frame, $D_{i}^{t}$ refers to the detected object for $G_{i}^{t}$, and $N_{mapped}^{t}$ 
+    is the number of mapped object pairs in the frame $t$.
+
 \end{itemize}
 
 
@@ -152,7 +181,9 @@ a metric called Intersection over Union is used.
         \caption{0.9 threshold}
         \label{fig:sfig6}
     \end{subfigure}
-    \caption{Examples of detected boxes for different thresholds in YOLOv3 for input's short dimension is 320}
+    \caption{Examples of detected boxes for different thresholds in YOLOv3 
+    for input's short dimension is 320. As it can be seen, the number of detected objects reduces 
+    from 0 threshold to 0.9 threshold.}
     \label{fig:exp_imgs}
 \end{figure}
 

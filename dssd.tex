@@ -8,7 +8,11 @@
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{models/dssd.png}
-    \caption{Networks of SSD and DSSD on ResNet \cite{dssdcite}}
+    \caption{Networks of SSD and DSSD on ResNet \cite{dssdcite}. 
+    The differences between SSD and DSSD networks are visible in the 
+    figure. Deconvolution modules are added after SSD layers. Also, 
+    the prediction layer in SSD is replaced with multiple prediction layers, 
+    so that, predictions are made after each deconvolution layers. }
     \label{fig:dssd1}
 \end{figure}
 
@@ -50,14 +54,18 @@ the deconvolution module in figure \ref{fig:deconvmod1}.
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{predmod}
-    \caption{Prediction Module \cite{dssdcite}}
+    \caption{Prediction Module \cite{dssdcite}.}
     \label{fig:predmod1}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{deconvmod}
-    \caption{Deconvolution Module \cite{dssdcite}}
+    \caption{Deconvolution Module \cite{dssdcite}. Feature layer is 
+    taken from the corresponding SSD layer which can be seen in figure 
+    \ref{fig:dssd1}. Also, the input deconvolution layer's dimensions 
+    are doubled with a deconvolution layer. Then, the layers in the 
+    deconvolution module are applied over the input layers.}
     \label{fig:deconvmod1}
 \end{figure}
 \end{document}

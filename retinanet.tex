@@ -7,7 +7,13 @@
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{focalloss}
-    \caption{Focal Loss \cite{flretnetcite}}
+    \caption{Focal Loss \cite{flretnetcite}. The effect of 
+    gamma can be observed. The contribution of well-classified 
+    examples to loss function reduces when gamma increases. 
+    Detectors are more focused on hard, misclassified examples. Thus, 
+    the accuracy of detectors are increased since they learn less 
+    from the well-classified examples, yet, more from the hard, 
+    misclassified examples.}
     \label{fig:focalloss1}
 \end{figure}
 
@@ -36,7 +42,11 @@ The best-performing $\gamma$ value equals to two according to the article.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{models/retinanet}
-    \caption{Network of RetinaNet \cite{flretnetcite}}
+    \caption{Network of RetinaNet \cite{flretnetcite}. Feature pyramid network 
+    is used after ResNet to generate a fine-grained, multi-scale convolutional 
+    feature pyramid. Then, two subnetworks are attached after RetinaNet in which 
+    one for classifying anchor boxes and the other one for regressing final 
+    bounding boxes from anchor boxes. }
     \label{fig:retinanet1}
 \end{figure}
 \indent

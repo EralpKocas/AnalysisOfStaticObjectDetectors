@@ -7,7 +7,14 @@
 \begin{figure}
     \centering
     \includegraphics[width=1.25\textwidth]{models/ssd}
-    \caption{Network of SSD \cite{ssdcite}}
+    \caption{Network of SSD \cite{ssdcite}. 
+    The pyramidal feature hierarchy can be seen on the figure. After 
+    the base model, VGG-16, extra feature layers and VGG-16 itself are 
+    connected to the detection layer by using 3x3 convolutional layers 
+    with different numbers of filters. For instance, there are 4 filters 
+    connected to detection layer from VGG-16. By using these multiple filters 
+    from the multiple convolutional feature layers provide more accurate object 
+    detection.}
     \label{fig:ssd1}
 \end{figure}
 
@@ -60,14 +67,22 @@ aspect ratios, default bounding boxes are calculated.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{featmapssd}
-    \caption{Multi-scale feature maps}
+    \caption{Multi-scale feature maps \cite{ssdcite}. Different sizes of feature maps 
+    are used to detect different sizes of objects in the given images. 
+    For instance, while 8x8 feature map can be able to detect the cat in 
+    the image, 4x4 feature map can be able to detect the dog in the image.}
     \label{fig:featmapssd1}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{ssdbbox}
-    \caption{Default Bounding Boxes}
+    \caption{Default Bounding Boxes \cite{jonhui}. This figure is the visualization of 
+    Conv4\_3 and it is 8x8 spatially (it should be 38x38). As it can be seen in the figure, 
+    there are four differently-shaped default bounding boxes to make object prediction. The 
+    reason for the different shapes of the default bounding boxes is to increase the 
+    possibility of detecting an object. For instance, the forth box in the figure can be used 
+    to detect people, yet, the first box can be used to detect cars in the given images.}
     \label{fig:ssdbbox1}
 \end{figure}
 
